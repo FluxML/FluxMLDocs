@@ -1,0 +1,114 @@
+<!DOCTYPE html><HTML lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><script charset="utf-8" src="../../../../assets/default/multidoc_injector.js" type="text/javascript"></script><script charset="utf-8" type="text/javascript">window.MULTIDOCUMENTER_ROOT_PATH = '/'</script><script charset="utf-8" src="../../../../assets/default/flexsearch.bundle.js" type="text/javascript"></script><script charset="utf-8" src="../../../../assets/default/flexsearch_integration.js" type="text/javascript"></script><meta charset="utf-8"/><meta content="Publish.jl" name="generator"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="" name="keywords"/><title>ParameterSchedulers.jl</title><link href="../../normalize.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" rel="stylesheet"/><link href="../../tabulator_simple.min.css" rel="stylesheet"/><link href="../../publish.css" rel="stylesheet"/><link href="../../default.min.css" rel="stylesheet"/><link href="../../custom.css" rel="stylesheet"/><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script><script src="../../versions.js"></script><script src="../../lunr.js"></script><script src="../../highlight.min.js"></script><script src="../../tabulator.min.js"></script><script src="../../julia.min.js"></script><script src="../../julia-repl.min.js"></script><script src="../../publish.js"></script><link href="../../../../assets/default/multidoc.css" rel="stylesheet" type="text/css"/><link href="../../../../assets/default/flexsearch.css" rel="stylesheet" type="text/css"/></head><body><nav id="multi-page-nav"><div class="hidden-on-mobile" id="nav-items"><a class="nav-link nav-item" href="../../../../flux/">Flux</a><div class="nav-dropdown"><button class="nav-item dropdown-label">Building Blocks</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a><a class="nav-link nav-item" href="../../../../functors/">Functors</a></ul></div><div class="nav-mega-column"><div class="column-header">Automatic differentiation libraries</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../zygote/">Zygote</a></ul></div><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Training</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Data Wrangling</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mlutils/">MLUtils</a><a class="nav-link nav-item" href="../../../../onehotarrays/">OneHotArrays</a></ul></div><div class="nav-mega-column"><div class="column-header">Data Augmentation</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../dataaugmentation/">DataAugmentation</a></ul></div><div class="nav-mega-column"><div class="column-header">Datasets</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mldatasets/">MLDatasets</a></ul></div><div class="nav-mega-column"><div class="column-header">Schedulers</div><ul class="column-content"><a class="nav-link active nav-item" href="../../../dev/">ParameterSchedulers</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Models</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Computer Vision</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../metalhead/">Metalhead</a></ul></div><div class="nav-mega-column"><div class="column-header">Natural Language Processing</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../transformers/">Transformers</a></ul></div></div></div><div class="search nav-item"><input id="search-input" placeholder="Search..."/><ul class="suggestions hidden" id="search-result-container"></ul><div class="search-keybinding">/</div></div></div><button id="multidoc-toggler"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg></button></nav><main id="page"><div class="menu"><div id="projectname">ParameterSchedulers.jl</div><input id="search-input" placeholder="Search"/><select id="version-selector"></select><svg fill="none" height="24" id="menu-toggler" onclick="toggleIndexPage();" title="Contents" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6Z" fill="currentColor"></path><path d="M2 12.0322C2 11.4799 2.44772 11.0322 3 11.0322H21C21.5523 11.0322 22 11.4799 22 12.0322C22 12.5845 21.5523 13.0322 21 13.0322H3C2.44772 13.0322 2 12.5845 2 12.0322Z" fill="currentColor"></path><path d="M3 17.0645C2.44772 17.0645 2 17.5122 2 18.0645C2 18.6167 2.44772 19.0645 3 19.0645H21C21.5523 19.0645 22 18.6167 22 18.0645C22 17.5122 21.5523 17.0645 21 17.0645H3Z" fill="currentColor"></path></svg></div><div id="toc"><p><a href="../../README.html">Introduction</a></p><p><a href="../../docs/cheatsheet.html">Schedule cheatsheet</a></p><h1 id="tutorials"><a class="anchor" href="../../#tutorials"></a>Tutorials</h1><ul><li><a href="../../docs/tutorials/getting-started.html">Getting started</a></li><li><a href="../../docs/tutorials/basic-schedules.html">Basic schedules</a></li><li><a href="../../docs/tutorials/optimizers.html">Optimizers</a></li><li><a href="../../docs/tutorials/complex-schedules.html">Complex schedules</a></li><li><a href="../../docs/tutorials/warmup-schedules.html">Warmup schedules</a></li></ul><p><a href="../../docs/interfaces/generic.html">Interface</a></p><hr/><p><a href="../../docstrings.html">API Reference</a></p></div><article id="content"><h1 id="generic-interface"><a class="anchor" href="#generic-interface"></a>Generic interface</h1><p>All schedules must implement the interface <code>(s::MySchedule)(t)</code> which returns the schedule value at iteration <code>t</code>. Additionally, a schedule must implement <code>Base.iterate</code> from the <a href="https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-iteration">iteration interface</a> and <code>Base.eltype</code> when possible. This is the minimal interface required to work with the rest of ParameterSchedulers.jl.</p><p>It is <em>strongly</em> recommended that your schedule subtypes <a href="../../docstrings/ParameterSchedulers.AbstractSchedule.html"><code>ParameterSchedulers.AbstractSchedule</code></a>. This will define <code>Base.iterate</code> and several other pieces of the iteration interface for you.</p><p><code>AbstractSchedule</code> takes a single type parameter, <code>IsFinite</code>. Below are the possible values.</p><ul><li><code>AbstractSchedule{true}</code>: use for finite schedules
+<ul><li><code>Base.IteratorSize</code> is auto-implemented as <code>Base.HasLength()</code></li><li><code>Base.axes(s)</code> is auto-implemented as <code>1:length(s)</code></li><li>Requires <code>Base.length</code> to be implemented by you</li></ul></li><li><code>AbstractSchedule{false}</code>: use for infinite schedules
+<ul><li><code>Base.IteratorSize</code> is auto-implemented as <code>Base.IsInfinite()</code></li><li><code>Base.axes</code> is auto-implemented as <code>OneToInf()</code></li></ul></li><li><code>AbstractSchedule{missing}</code>: use for schedules where infinite/finite is unknown
+<ul><li><code>Base.IteratorSize</code> is auto-implemented as <code>Base.SizeUnknown()</code></li><li><code>Base.axes</code> is auto-implemented as <code>OneToInf()</code></li></ul></li><li><code>AbstractSchedule{T}</code>: use for schedules where the length depends on <code>T</code><ul><li><code>Base.IteratorSize</code> is auto-implemented as <code>Base.IteratorSize(T)</code></li></ul></li></ul><h1 id="examples"><a class="anchor" href="#examples"></a>Examples</h1><h2 id="lambda-schedule"><a class="anchor" href="#lambda-schedule"></a>Lambda schedule</h2><p>Below we implement <code>Lambda</code> to illustrate what is required for a custom schedule. <code>Lambda</code> simply wraps a function, <code>f</code>, and the schedule value at iteration <code>t</code> is <code>f(t)</code>.</p><pre><code cell="generic-interface" class="language-julia">using ParameterSchedulers
+using ParameterSchedulers: AbstractSchedule
+
+struct Lambda{T} &lt;: AbstractSchedule{missing}
+    f::T
+end
+</code></pre><p>Next we implement the necessary interfaces. The easiest way to define <code>(s::Lambda)(t)</code>, then rely on that to define the iteration behavior.</p><pre><code cell="generic-interface" class="language-julia">(schedule::Lambda)(t) = schedule.f(t)
+
+Base.iterate(schedule::Lambda, t = 1) = schedule(t), t + 1
+
+# since the eltype is unknown, we indicate it
+Base.IteratorEltype(::Type{&lt;:Lambda}) = Base.EltypeUnknown()
+</code></pre><div class="admonition tip"><p class="admonition-title">Tip</p><p>Sometimes, it might be more efficient to define <code>Base.iterate</code> separately from <code>s(t)</code>. See <a href="../../docstrings/ParameterSchedulers.Step.html"><code>Step</code></a> for an example what this might look like.</p></div><p>You can also define optional parts of the iteration interface if you choose. They are not required for ParameterSchedulers.jl.</p><p>Once you are done defining the above interfaces, you can start using <code>Lambda</code> like any other schedule. For example, below we create a <a href="../../docstrings/ParameterSchedulers.Loop.html"><code>Loop</code></a> where the interval is defined as a <code>Lambda</code></p><pre><code cell="generic-interface" class="language-julia">using UnicodePlots
+
+s = Loop(Lambda(log), 4)
+t = 1:10 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   2 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⠀⠀⠀⠀⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⠀⠀⠀⡜⠀ 
+     ⠀⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⢰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⡸⠀⠀ 
+     ⠀⠀⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⡰⠁⠀⠀ 
+     ⠀⠀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡀⢠⠃⠀⠀⠀ 
+   0 ⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣧⠃⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀1⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀10⠀ </code></pre><h2 id="decay-by-half"><a class="anchor" href="#decay-by-half"></a>Decay by half</h2><p>We will implement a <code>Decay2</code> schedule that halves the parameter value every iteration. First, we define the struct.</p><pre><code cell="decay-interface" class="language-julia">using ParameterSchedulers
+using ParameterSchedulers: AbstractSchedule
+
+# we subtype AbstractSchedule{IsFinite} with IsFinite == false
+# this is because this is an infinite schedule
+struct Decay2{T&lt;:Number} &lt;: AbstractSchedule{false}
+    λ::T
+end
+</code></pre><p>After this, we can define the interface functions. Our decay function will be defined as <span class="math tex">\(g(t) = \frac{1}{2^{t - 1}}\)</span>.</p><pre><code cell="decay-interface" class="language-julia">(schedule::Decay2)(t) = schedule.λ / 2^(t - 1)
+</code></pre><p>Now, we can use <code>Decay2</code> schedule like any other decay schedule. Below, sequence two different <code>Decay2</code> schedules.</p><pre><code cell="decay-interface" class="language-julia">using UnicodePlots
+
+s = Sequence(Decay2(0.5) =&gt; 5, Decay2(0.2) =&gt; 5)
+t = 1:10 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.5 ⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠑⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠈⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⢄⠀⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀⠀⠀⠈⠑⠤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠤⣀⣀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⠤⢄⣀⠀⠀⠀⠀⠀⠀⠀ 
+     0 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠑⠒⠒⠢⠤⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀1⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀10⠀ </code></pre><h2 id="a-square-wave-schedule"><a class="anchor" href="#a-square-wave-schedule"></a>A square wave schedule</h2><p>Now, we’ll use the interface to implement a new cyclic schedule, <code>Square</code>, which implements a <a href="https://en.wikipedia.org/wiki/Square_wave">square wave</a>.</p><pre><code cell="cyclic-interface" class="language-julia">using ParameterSchedulers
+using ParameterSchedulers: AbstractSchedule
+
+struct Square{T&lt;:Number, S&lt;:Integer} &lt;: AbstractSchedule{false}
+    λ0::T
+    λ1::T
+    period::S
+end
+</code></pre><p>Now, we implement the interface. The cycle function, <span class="math tex">\(g(t)\)</span>, will return <code>λ1</code> for the first <code>period / 2</code> steps, then <code>λ0</code> for the next.</p><pre><code cell="cyclic-interface" class="language-julia">(schedule::Square{T})(t) where T =
+    (mod(t - 1, schedule.period) &lt; schedule.period / 2) ? schedule.λ1 : schedule.λ0
+</code></pre><p><code>Square</code> is ready to use like any other schedule.</p><pre><code cell="cyclic-interface" class="language-julia">using UnicodePlots
+
+s = Square(0.2, 0.8, 4)
+t = 1:20 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.8 ⠀⠀⠀⠉⠉⡇⠀⠀⠀⠀⢸⠉⠉⡇⠀⠀⠀⠀⢰⠉⠉⡇⠀⠀⠀⠀⢰⠉⠉⡇⠀⠀⠀⠀⢸⠉⠉⡇⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⡸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⢇⠀⠀⠀⠀⢸⠀⠀⢇⠀⠀⠀⠀⡸⠀⠀⡇⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠸⡀⠀⠀⢠⠃⠀⠀⠸⡀⠀⠀⢀⠇⠀⠀⠘⡄⠀⠀⢀⠇⠀⠀⠘⡄⠀⠀⢠⠃⠀⠀⠸⡀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⢸⠀⠀⠀⠀⡇⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⢣⠀⠀⡎⠀⠀⠀⠀⢣⠀⠀⡜⠀⠀⠀⠀⢱⠀⠀⡜⠀⠀⠀⠀⢱⠀⠀⡎⠀⠀⠀⠀⢣⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⡇⠀⠀⠀⠀⢸⠀⠀⠀ 
+   0.2 ⠀⠀⠀⠀⠀⠀⢸⣀⣀⡇⠀⠀⠀⠀⢸⣀⣀⡇⠀⠀⠀⠀⢸⣀⣀⡇⠀⠀⠀⠀⢸⣀⣀⡇⠀⠀⠀⠀⢸⣀⣀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀20⠀ </code></pre></article><div id="page-navigation"><a href="../tutorials/warmup-schedules.html" id="previous-page" title="Previous"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z" fill="currentColor"></path></svg></a><a href="../../docstrings.html" id="next-page" title="Next"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.5858 6.34317L12 4.92896L19.0711 12L12 19.0711L10.5858 17.6569L16.2427 12L10.5858 6.34317Z" fill="currentColor"></path></svg></a></div><footer>
+            Built with <a href="https://github.com/MichaelHatherly/Publish.jl" target="_blank">Publish.jl</a> and the <a href="https://julialang.org" target="_blank">Julia Language</a>.
+        </footer></main><script>hljs.initHighlightingOnLoad();</script><script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ]
+            });
+        });
+    </script></body></HTML>

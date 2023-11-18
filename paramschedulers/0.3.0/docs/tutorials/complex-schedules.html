@@ -1,0 +1,186 @@
+<!DOCTYPE html><HTML lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><script charset="utf-8" src="../../../../assets/default/multidoc_injector.js" type="text/javascript"></script><script charset="utf-8" type="text/javascript">window.MULTIDOCUMENTER_ROOT_PATH = '/'</script><script charset="utf-8" src="../../../../assets/default/flexsearch.bundle.js" type="text/javascript"></script><script charset="utf-8" src="../../../../assets/default/flexsearch_integration.js" type="text/javascript"></script><meta charset="utf-8"/><meta content="Publish.jl" name="generator"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="" name="keywords"/><title>ParameterSchedulers.jl</title><link href="../../normalize.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" rel="stylesheet"/><link href="../../tabulator_simple.min.css" rel="stylesheet"/><link href="../../publish.css" rel="stylesheet"/><link href="../../default.min.css" rel="stylesheet"/><link href="../../custom.css" rel="stylesheet"/><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script><script src="../../versions.js"></script><script src="../../lunr.js"></script><script src="../../highlight.min.js"></script><script src="../../tabulator.min.js"></script><script src="../../julia.min.js"></script><script src="../../julia-repl.min.js"></script><script src="../../publish.js"></script><link href="../../../../assets/default/multidoc.css" rel="stylesheet" type="text/css"/><link href="../../../../assets/default/flexsearch.css" rel="stylesheet" type="text/css"/></head><body><nav id="multi-page-nav"><div class="hidden-on-mobile" id="nav-items"><a class="nav-link nav-item" href="../../../../flux/">Flux</a><div class="nav-dropdown"><button class="nav-item dropdown-label">Building Blocks</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a><a class="nav-link nav-item" href="../../../../functors/">Functors</a></ul></div><div class="nav-mega-column"><div class="column-header">Automatic differentiation libraries</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../zygote/">Zygote</a></ul></div><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Training</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Data Wrangling</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mlutils/">MLUtils</a><a class="nav-link nav-item" href="../../../../onehotarrays/">OneHotArrays</a></ul></div><div class="nav-mega-column"><div class="column-header">Data Augmentation</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../dataaugmentation/">DataAugmentation</a></ul></div><div class="nav-mega-column"><div class="column-header">Datasets</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mldatasets/">MLDatasets</a></ul></div><div class="nav-mega-column"><div class="column-header">Schedulers</div><ul class="column-content"><a class="nav-link active nav-item" href="../../../dev/">ParameterSchedulers</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Models</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Computer Vision</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../metalhead/">Metalhead</a></ul></div><div class="nav-mega-column"><div class="column-header">Natural Language Processing</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../transformers/">Transformers</a></ul></div></div></div><div class="search nav-item"><input id="search-input" placeholder="Search..."/><ul class="suggestions hidden" id="search-result-container"></ul><div class="search-keybinding">/</div></div></div><button id="multidoc-toggler"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg></button></nav><main id="page"><div class="menu"><div id="projectname">ParameterSchedulers.jl</div><input id="search-input" placeholder="Search"/><select id="version-selector"></select><svg fill="none" height="24" id="menu-toggler" onclick="toggleIndexPage();" title="Contents" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6Z" fill="currentColor"></path><path d="M2 12.0322C2 11.4799 2.44772 11.0322 3 11.0322H21C21.5523 11.0322 22 11.4799 22 12.0322C22 12.5845 21.5523 13.0322 21 13.0322H3C2.44772 13.0322 2 12.5845 2 12.0322Z" fill="currentColor"></path><path d="M3 17.0645C2.44772 17.0645 2 17.5122 2 18.0645C2 18.6167 2.44772 19.0645 3 19.0645H21C21.5523 19.0645 22 18.6167 22 18.0645C22 17.5122 21.5523 17.0645 21 17.0645H3Z" fill="currentColor"></path></svg></div><div id="toc"><p><a href="../../README.html">Introduction</a></p><p><a href="../../docs/cheatsheet.html">Schedule cheatsheet</a></p><h1 id="tutorials"><a class="anchor" href="../../#tutorials"></a>Tutorials</h1><ul><li><a href="../../docs/tutorials/getting-started.html">Getting started</a></li><li><a href="../../docs/tutorials/basic-schedules.html">Basic schedules</a></li><li><a href="../../docs/tutorials/optimizers.html">Optimizers</a></li><li><a href="../../docs/tutorials/complex-schedules.html">Complex schedules</a></li></ul><p><a href="../../docs/interfaces/generic.html">Interface</a></p><hr/><p><a href="../../docstrings.html">API Reference</a></p></div><article id="content"><h1 id="complex-schedules"><a class="anchor" href="#complex-schedules"></a>Complex schedules</h1><p>While the <a href="basic-schedules.html#basic-schedules">basic schedules</a> tutorial covered the simple decay and cyclic schedules available in ParameterSchedulers.jl, it is possible to more complex schedules for added flexibility.</p><h2 id="arbitrary-functions"><a class="anchor" href="#arbitrary-functions"></a>Arbitrary functions</h2><p>Sometimes, a simple function is the easiest way to specify a schedule. Unlike PyTorch’s <a href="https://pytorch.org/docs/master/optim.html?highlight=lambdalr#torch.optim.lr_scheduler.LambdaLR"><code>LambdaLR</code></a>, ParameterSchedulers.jl allows you to use the function directly. The schedule output is <code>f(t)</code>. While you can use <code>f</code> directly to build up complex schedules (as we’ll see in the next section), it lacks functionality like <code>Base.iterate</code>. If you want <code>f</code> to behave more formally like a schedule, implement the <a href="../interfaces/generic.html#generic-interface">generic interface</a> for schedules.</p><h2 id="arbitrary-looping-schedules"><a class="anchor" href="#arbitrary-looping-schedules"></a>Arbitrary looping schedules</h2><p>Let’s take the notion of arbitrary schedules one step further, and instead define how a schedule behaves over a given interval or period. Then, we would like to loop that interval over and over. This is precisely what <a href="../../docstrings/ParameterSchedulers.Loop.html"><code>Loop</code></a> achieves. For example, we may want to apply an <a href="../../docstrings/ParameterSchedulers.Exp.html"><code>Exp</code></a> schedule for 10 iterations, then repeat from the beginning, and so forth.</p><pre><code cell="complex-schedules" class="language-julia">using UnicodePlots
+
+s = Loop(Exp(λ = 0.1, γ = 0.4), 10)
+t = 1:25 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.1 ⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠸⡀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠁⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠸⡄⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     0 ⠀⠀⠀⠀⠀⠀⠑⠢⢄⣀⣀⣀⣀⣀⡇⠀⠀⠀⠀⠈⠒⠤⣀⣀⣀⣀⣀⣸⠀⠀⠀⠀⠀⠑⠂⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀30⠀ </code></pre><p>Or we can just an arbitrary function to loop (e.g. <code>log</code>).</p><pre><code cell="complex-schedules" class="language-julia">s = Loop(log, 10)
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   3 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⢀⠎⠁⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⢠⠊⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⢀⠜⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⡎⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0 ⠀⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀30⠀ </code></pre><h2 id="sequences-of-schedules"><a class="anchor" href="#sequences-of-schedules"></a>Sequences of schedules</h2><p>Finally, we might concatenate sequences of schedules, applying each one for a given length, then switch to the next schedule in the order. A <a href="../../docstrings/ParameterSchedulers.Sequence.html"><code>Sequence</code></a> schedule lets us do this. For example, we can start with a triangular schedule, then switch to a more conservative exponential schedule half way through training.</p><pre><code cell="complex-schedules" class="language-julia">nepochs = 50
+s = Sequence([Triangle(λ0 = 0.0, λ1 = 0.5, period = 5), Exp(λ = 0.5, γ = 0.5)],
+             [nepochs ÷ 2, nepochs ÷ 2])
+
+t = 1:nepochs |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.5 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⢀⡀⠀⠀⢀⡀⠀⠀⢀⡀⠀⠀⢀⡀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡏⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⡇⢱⠀⠀⡇⢱⠀⠀⡇⢸⠀⠀⡇⢱⠀⠀⡇⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢰⠁⢸⠀⢰⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⠀⢸⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⢸⡀⢸⠀⠸⡀⢸⠀⠸⡀⢸⠀⢸⡀⢸⠀⠸⡟⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⢸⠀⠀⡇⡜⠀⠀⡇⡜⠀⠀⡇⡜⠀⠀⡇⡸⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⡇⡇⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⡇⠀⠀⢇⡇⠀⠀⢇⡇⠀⠀⢇⡇⠀⠀⢣⡇⠀⠀⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⢀⠇⠀⠀⢸⠁⠀⠀⢸⠃⠀⠀⢸⠃⠀⠀⢸⠃⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     0 ⠀⢸⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠑⢤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀50⠀ </code></pre><p>Alternatively, we might simply wish to manually set the parameter every interval. <code>Sequence</code> also accepts a vector of numbers.</p><pre><code cell="complex-schedules" class="language-julia">s = Sequence(1e-1 =&gt; 5, 5e-2 =&gt; 4, 3.4e-3 =&gt; 10)
+t = 1:20 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.1 ⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠤⠤⠤⠤⠤⠤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     0 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠀ 
+       ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+       ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀20⠀ </code></pre><p><code>Sequence</code> also accepts <a href="https://docs.julialang.org/en/v1.7/manual/arrays/#Generator-Expressions"><code>Base.Generators</code></a>.</p><pre><code cell="complex-schedules" class="language-julia">s = Sequence(2 / t for t in 1:10)
+t = 1:50 |&gt; collect
+lineplot(t, s.(t); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   2 ⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠉⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠑⠒⠒⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠣⠤⠤⠤⠤⢄⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠒⠒⠒⠒⠒⠒⠒⠲⠤⠤⠤⠀ 
+   0 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+     ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀50⠀ </code></pre><p>We can also pass a separate generator for <code>schedules</code> and <code>step_sizes</code>. When only a single generator is passed, <code>step_sizes</code> is the iterator that the generator is based on.</p><h2 id="interpolating-schedules"><a class="anchor" href="#interpolating-schedules"></a>Interpolating schedules</h2><p>Sometimes, we want to specify a schedule in different units than our iteration state. Below, we’ll see two common examples where this might be the case, and how <a href="../../docstrings/ParameterSchedulers.Interpolator.html"><code>Interpolator</code></a> can make our lives a bit easier.</p><p>In our first example, we’ll consider a situation where our iteration state is continuous. This is typical in differential equation solvers where we iterate over time (i.e. over <code>dt, 2dt, 3dt, ...</code> where <code>dt</code> is the solver time step). Conceptually, each step over time should move our schedule forward “by one” (i.e. over iteration states <code>1, 2, 3, ...</code>). To move from one iteration scheme to the other, we want to <em>interpolate</em> our time range at a rate of <code>dt</code>.</p><pre><code cell="complex-schedules" class="language-julia">dt = 1e-3 # simulation time step in seconds
+T = 2 # simulate 2 seconds
+# our parameter is 1e-2 for the first half of the simulation
+# then it drops to 1e-3 for the second half of the simulation
+# we interpolate at a rate of dt
+s = Interpolator(Sequence(1e-2 =&gt; cld(T, dt) / 2, 1e-3 =&gt; cld(T, dt) / 2), dt)
+
+# the time range of the simulation in seconds
+trange = dt:dt:T |&gt; collect
+lineplot(trange, s.(trange); border = :none)
+</code></pre><pre><code class="plaintext cell-output cell-result">         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    0.01 ⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+   0.001 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀ 
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+         ⠀0⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀2⠀ </code></pre><p>Notice that our schedule changes around 1 second (half way through the simulation).</p><p>For the second example, we’ll look at a machine learning use-case. We want to write our schedule in terms of epochs, but our training loop iterates the scheduler every mini-batch.</p><pre><code cell="complex-schedules" class="language-julia">using Flux
+using ParameterSchedulers: Scheduler
+
+nepochs = 3
+data = [(rand(4, 10), rand([-1, 1], 1, 10)) for _ in 1:3]
+m = Chain(Dense(4, 4, tanh), Dense(4, 1, tanh))
+p = Flux.params(m)
+s = Interpolator(Sequence(1e-2 =&gt; 1, Exp(1e-2, 2.0) =&gt; 2), length(data))
+opt = Scheduler(s, Descent())
+for epoch in 1:nepochs
+    for (i, (x, y)) in enumerate(data)
+        g = Flux.gradient(() -&gt; Flux.mse(m(x), y), p)
+        Flux.update!(opt, p, g)
+        println("epoch: $epoch, batch: $i, η: $(opt.optim.eta)")
+    end
+end
+</code></pre><pre><code class="plaintext cell-output cell-stream">epoch: 1, batch: 1, η: 0.01
+epoch: 1, batch: 2, η: 0.01
+epoch: 1, batch: 3, η: 0.01
+epoch: 2, batch: 1, η: 0.01
+epoch: 2, batch: 2, η: 0.01
+epoch: 2, batch: 3, η: 0.01
+epoch: 3, batch: 1, η: 0.02
+epoch: 3, batch: 2, η: 0.02
+epoch: 3, batch: 3, η: 0.02
+</code></pre><h2 id="composing-schedules"><a class="anchor" href="#composing-schedules"></a>Composing schedules</h2><p>While the functionality above is already quite powerful, we are still limited to constant values for our schedule’s fields. Just like we use schedules to adjust our model’s hyper-parameters, we might want to use schedules to adjust our schedule’s fields! You can do this with <a href="../../docstrings/ParameterSchedulers.ComposedSchedule.html"><code>ComposedSchedule</code></a>.</p><p>In fact, many of the cyclic schedules are built on top of this feature. As an exercise, we will build <code>SinDecay10</code> which behaves similar to <code>SinDecay2</code> but dropping the peak amplitude by a factor of 10 each time.</p><pre><code cell="complex-schedules" class="language-julia">function SinDecay10(range, offset, period)
+    parameters = (Step(range, 0.1, period), offset, period)
+    ComposedSchedule(Sin(range, offset, period), parameters)
+end
+
+SinDecay10(0.5, 0.1, 5)
+</code></pre><pre><code class="plaintext cell-output cell-result">ComposedSchedule(Sin{Float64, Int64}, (Step{Float64, Repeated{Int64}}(0.5, 0.1, Repeated{Int64}(5)), Constant{Float64}(0.1), Constant{Int64}(5)))</code></pre><p>We passed <code>ComposedSchedule</code> two arguments:</p><ul><li>a schedule whose fields we want to compose</li><li>a tuple that dictates how each field changes</li></ul><p>The <code>parameters</code> matches the arguments to the <code>Sin</code> positional constructor: <code>(range, offset, period)</code>. We specified that the range should decay exponentially by a factor of 10 every <code>period</code> steps.</p><p>By default, <code>ComposedSchedule</code> will use the default constructor to create a new instance of the composed schedule. In our example, this corresponds to something like</p><pre><code class="language-julia">ps = map(p -&gt; p(t), composed.parameters)
+s = typeof(composed.schedule)(ps...)
+</code></pre><p>If this is not going to work for your schedule, then you can use the three argument form: <code>ComposedSchedule(compose_fn, schedule, parameters)</code>. <code>schedule</code> and <code>parameters</code> are the same arguments as before. <code>compose_fn</code> is the new argument that is a function of the form <code>(schedule, parameter_values) -&gt; new_schedule</code>. Here is an dummy example that works the same as before but illustrates how to use <code>compose_fn</code>.</p><pre><code class="language-julia">function SinDecay10(range, offset, period)
+    parameters = (Step(range, 0.1, period), offset, period)
+    ComposedSchedule(Sin(range, offset, period), parameters) do schedule, parameter_values
+        @show schedule
+        @show parameter_values
+        Sin(parameter_values...)
+    end
+end
+</code></pre></article><div id="page-navigation"><a href="optimizers.html" id="previous-page" title="Previous"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z" fill="currentColor"></path></svg></a><a href="../interfaces/generic.html" id="next-page" title="Next"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.5858 6.34317L12 4.92896L19.0711 12L12 19.0711L10.5858 17.6569L16.2427 12L10.5858 6.34317Z" fill="currentColor"></path></svg></a></div><footer>
+            Built with <a href="https://github.com/MichaelHatherly/Publish.jl" target="_blank">Publish.jl</a> and the <a href="https://julialang.org" target="_blank">Julia Language</a>.
+        </footer></main><script>hljs.initHighlightingOnLoad();</script><script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ]
+            });
+        });
+    </script></body></HTML>

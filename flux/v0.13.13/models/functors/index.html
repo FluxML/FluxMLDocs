@@ -1,0 +1,156 @@
+<!DOCTYPE html><HTML lang="en"><head><script charset="utf-8" src="../../../../assets/default/multidoc_injector.js" type="text/javascript"></script><script charset="utf-8" type="text/javascript">window.MULTIDOCUMENTER_ROOT_PATH = '/'</script><script charset="utf-8" src="../../../../assets/default/flexsearch.bundle.js" type="text/javascript"></script><script charset="utf-8" src="../../../../assets/default/flexsearch_integration.js" type="text/javascript"></script><meta charset="UTF-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Nested Structures – Functors.jl · Flux</title><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-36890222-9"></script><script>  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-36890222-9', {'page_path': location.pathname + location.search + location.hash});
+</script><script data-outdated-warner="" src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script data-main="../../assets/documenter.js" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" data-theme-name="documenter-dark" data-theme-primary-dark="" href="../../assets/themes/documenter-dark.css" rel="stylesheet" type="text/css"/><link class="docs-theme-link" data-theme-name="documenter-light" data-theme-primary="" href="../../assets/themes/documenter-light.css" rel="stylesheet" type="text/css"/><script src="../../assets/themeswap.js"></script><link href="../../assets/flux.css" rel="stylesheet" type="text/css"/><link href="nothing/flux/stable/models/functors/" rel="canonical"/><link href="../../../../assets/default/multidoc.css" rel="stylesheet" type="text/css"/><link href="../../../../assets/default/flexsearch.css" rel="stylesheet" type="text/css"/></head><body><nav id="multi-page-nav"><div class="hidden-on-mobile" id="nav-items"><a class="nav-link active nav-item" href="../../../">Flux</a><div class="nav-dropdown"><button class="nav-item dropdown-label">Building Blocks</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a><a class="nav-link nav-item" href="../../../../functors/">Functors</a></ul></div><div class="nav-mega-column"><div class="column-header">Automatic differentiation libraries</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../zygote/">Zygote</a></ul></div><div class="nav-mega-column"><div class="column-header">Neural Network primitives</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../nnlib/">NNlib</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Training</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Data Wrangling</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mlutils/">MLUtils</a><a class="nav-link nav-item" href="../../../../onehotarrays/">OneHotArrays</a></ul></div><div class="nav-mega-column"><div class="column-header">Data Augmentation</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../dataaugmentation/">DataAugmentation</a></ul></div><div class="nav-mega-column"><div class="column-header">Datasets</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../mldatasets/">MLDatasets</a></ul></div><div class="nav-mega-column"><div class="column-header">Schedulers</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../paramschedulers/dev/">ParameterSchedulers</a></ul></div></div></div><div class="nav-dropdown"><button class="nav-item dropdown-label">Models</button><div class="nav-dropdown-container nav-mega-dropdown-container"><div class="nav-mega-column"><div class="column-header">Computer Vision</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../metalhead/">Metalhead</a></ul></div><div class="nav-mega-column"><div class="column-header">Natural Language Processing</div><ul class="column-content"><a class="nav-link nav-item" href="../../../../transformers/">Transformers</a></ul></div></div></div><div class="search nav-item"><input id="search-input" placeholder="Search..."/><ul class="suggestions hidden" id="search-result-container"></ul><div class="search-keybinding">/</div></div></div><button id="multidoc-toggler"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg></button></nav><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img alt="Flux logo" class="docs-light-only" src="../../assets/logo.png"/><img alt="Flux logo" class="docs-dark-only" src="../../assets/logo-dark.png"/></a><form action="../../search/" class="docs-search"><input class="docs-search-query" id="documenter-search-query" name="q" placeholder="Search docs" type="text"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Welcome</a></li><li><span class="tocitem">Guide</span><ul><li><a class="tocitem" href="../quickstart/">Quick Start</a></li><li><a class="tocitem" href="../overview/">Fitting a Line</a></li><li><a class="tocitem" href="../basics/">Gradients and Layers</a></li><li><a class="tocitem" href="../../training/training/">Training</a></li><li><a class="tocitem" href="../recurrence/">Recurrence</a></li><li><a class="tocitem" href="../../gpu/">GPU Support</a></li><li><a class="tocitem" href="../../saving/">Saving &amp; Loading</a></li><li><a class="tocitem" href="../../performance/">Performance Tips</a></li></ul></li><li><a class="tocitem" href="../../ecosystem/">Ecosystem</a></li><li><span class="tocitem">Reference</span><ul><li><a class="tocitem" href="../layers/">Built-in Layers</a></li><li><a class="tocitem" href="../activation/">Activation Functions</a></li><li><a class="tocitem" href="../../utilities/">Weight Initialisation</a></li><li><a class="tocitem" href="../losses/">Loss Functions</a></li><li><a class="tocitem" href="../../training/reference/">Training API</a></li><li><a class="tocitem" href="../../training/optimisers/">Optimisation Rules</a></li><li><a class="tocitem" href="../../outputsize/">Shape Inference</a></li><li><a class="tocitem" href="../../destructure/">Flat vs. Nested</a></li><li><a class="tocitem" href="../../training/callbacks/">Callback Helpers</a></li><li><a class="tocitem" href="../../training/zygote/">Gradients – Zygote.jl</a></li><li><a class="tocitem" href="../../data/mlutils/">Batching Data – MLUtils.jl</a></li><li><a class="tocitem" href="../../data/onehot/">OneHotArrays.jl</a></li><li><a class="tocitem" href="../nnlib/">Low-level Operations – NNlib.jl</a></li><li class="is-active"><a class="tocitem" href="">Nested Structures – Functors.jl</a></li></ul></li><li><span class="tocitem">Tutorials</span><ul><li><a class="tocitem" href="../../tutorials/linear_regression/">Linear Regression</a></li><li><a class="tocitem" href="../advanced/">Custom Layers</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Reference</a></li><li class="is-active"><a href="">Nested Structures – Functors.jl</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="">Nested Structures – Functors.jl</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/FluxML/Flux.jl/blob/master/docs/src/models/functors.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" href="#" id="documenter-settings-button" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" href="#" id="documenter-sidebar-button"></a></div></header><article class="content" id="documenter-page"><h1 id="Recursive-transformations-from-Functors.jl"><a class="docs-heading-anchor" href="#Recursive-transformations-from-Functors.jl">Recursive transformations from Functors.jl</a><a id="Recursive-transformations-from-Functors.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Recursive-transformations-from-Functors.jl" title="Permalink"></a></h1><p>Flux models are deeply nested structures, and <a href="https://github.com/FluxML/Functors.jl">Functors.jl</a> provides tools needed to explore such objects, apply functions to the parameters they contain, and re-build them.</p><p>New layers should be annotated using the <code>Functors.@functor</code> macro. This will enable <a href="../../training/reference/#Flux.params"><code>params</code></a> to see the parameters inside, and <a href="../../gpu/#Flux.gpu"><code>gpu</code></a> to move them to the GPU.</p><p><code>Functors.jl</code> has its own <a href="https://fluxml.ai/Functors.jl/stable/#Basic-Usage-and-Implementation">notes on basic usage</a> for more details. Additionally, the <a href="../advanced/#man-advanced">Advanced Model Building and Customisation</a> page covers the use cases of <code>Functors</code> in greater details.</p><article class="docstring"><header><a class="docstring-binding" href="#Functors.@functor" id="Functors.@functor"><code>Functors.@functor</code></a> — <span class="docstring-category">Macro</span></header><section><div><pre><code class="language-julia hljs">@functor T
+@functor T (x,)</code></pre><p>Adds methods to <a href="#Functors.functor"><code>functor</code></a> allowing recursion into objects of type <code>T</code>, and reconstruction. Assumes that <code>T</code> has a constructor accepting all of its fields, which is true unless you have provided an inner constructor which does not.</p><p>By default all fields of <code>T</code> are considered <a href="#Functors.children"><code>children</code></a>;  this can be restricted be restructed by providing a tuple of field names.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; struct Foo; x; y; end
+
+julia&gt; @functor Foo
+
+julia&gt; Functors.children(Foo(1,2))
+(x = 1, y = 2)
+
+julia&gt; _, re = Functors.functor(Foo(1,2));
+
+julia&gt; re((10, 20))
+Foo(10, 20)
+
+julia&gt; struct TwoThirds a; b; c; end
+
+julia&gt; @functor TwoThirds (a, c)
+
+julia&gt; ch2, re3 = Functors.functor(TwoThirds(10,20,30));
+
+julia&gt; ch2
+(a = 10, c = 30)
+
+julia&gt; re3(("ten", "thirty"))
+TwoThirds("ten", 20, "thirty")
+
+julia&gt; fmap(x -&gt; 10x, TwoThirds(Foo(1,2), Foo(3,4), 56))
+TwoThirds(Foo(10, 20), Foo(3, 4), 560)</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.fmap" id="Functors.fmap"><code>Functors.fmap</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">fmap(f, x, ys...; exclude = Functors.isleaf, walk = Functors.DefaultWalk()[, prune])
+fmap(walk, f, x, ys...)</code></pre><p>A structure and type preserving <code>map</code>.</p><p>By default it transforms every leaf node (identified by <code>exclude</code>, default <a href="#Functors.isleaf"><code>isleaf</code></a>) by applying <code>f</code>, and otherwise traverses <code>x</code> recursively using <a href="#Functors.functor"><code>functor</code></a>. Optionally, it may also be associated with objects <code>ys</code> with the same tree structure. In that case, <code>f</code> is applied to the corresponding leaf nodes in <code>x</code> and <code>ys</code>.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; fmap(string, (x=1, y=(2, 3)))
+(x = "1", y = ("2", "3"))
+
+julia&gt; nt = (a = [1,2], b = [23, (45,), (x=6//7, y=())], c = [8,9]);
+
+julia&gt; fmap(println, nt)
+[1, 2]
+23
+45
+6//7
+()
+[8, 9]
+(a = nothing, b = Any[nothing, (nothing,), (x = nothing, y = nothing)], c = nothing)
+
+julia&gt; fmap(println, nt; exclude = x -&gt; x isa Array)
+[1, 2]
+Any[23, (45,), (x = 6//7, y = ())]
+[8, 9]
+(a = nothing, b = nothing, c = nothing)
+
+julia&gt; twice = [1, 2];  # println only acts once on this
+
+julia&gt; fmap(println, (i = twice, ii = 34, iii = [5, 6], iv = (twice, 34), v = 34.0))
+[1, 2]
+34
+[5, 6]
+34
+34.0
+(i = nothing, ii = nothing, iii = nothing, iv = (nothing, nothing), v = nothing)
+
+julia&gt; d1 = Dict("x" =&gt; [1,2], "y" =&gt; 3);
+
+julia&gt; d2 = Dict("x" =&gt; [4,5], "y" =&gt; 6, "z" =&gt; "an_extra_value");
+
+julia&gt; fmap(+, d1, d2) == Dict("x" =&gt; [5, 7], "y" =&gt; 9) # Note that "z" is ignored
+true</code></pre><p>Mutable objects which appear more than once are only handled once (by caching <code>f(x)</code> in an <code>IdDict</code>). Thus the relationship <code>x.i === x.iv[1]</code> will be preserved. An immutable object which appears twice is not stored in the cache, thus <code>f(34)</code> will be called twice, and the results will agree only if <code>f</code> is pure.</p><p>By default, <code>Tuple</code>s, <code>NamedTuple</code>s, and some other container-like types in Base have children to recurse into. Arrays of numbers do not. To enable recursion into new types, you must provide a method of <a href="#Functors.functor"><code>functor</code></a>, which can be done using the macro <a href="#Functors.@functor"><code>@functor</code></a>:</p><pre><code class="language-julia-repl hljs">julia&gt; struct Foo; x; y; end
+
+julia&gt; @functor Foo
+
+julia&gt; struct Bar; x; end
+
+julia&gt; @functor Bar
+
+julia&gt; m = Foo(Bar([1,2,3]), (4, 5, Bar(Foo(6, 7))));
+
+julia&gt; fmap(x -&gt; 10x, m)
+Foo(Bar([10, 20, 30]), (40, 50, Bar(Foo(60, 70))))
+
+julia&gt; fmap(string, m)
+Foo(Bar("[1, 2, 3]"), ("4", "5", Bar(Foo("6", "7"))))
+
+julia&gt; fmap(string, m, exclude = v -&gt; v isa Bar)
+Foo("Bar([1, 2, 3])", (4, 5, "Bar(Foo(6, 7))"))</code></pre><p>To recurse into custom types without reconstructing them afterwards, use <a href="#Functors.fmapstructure"><code>fmapstructure</code></a>.</p><p>For advanced customization of the traversal behaviour, pass a custom <code>walk</code> function that subtypes <a href="models/ref"><code>Functors.AbstractWalk</code></a>. The form <code>fmap(walk, f, x, ys...)</code> can be called for custom walks. The simpler form <code>fmap(f, x, ys...; walk = mywalk)</code> will wrap <code>mywalk</code> in <a href="models/@ref"><code>ExcludeWalk</code></a> then <a href="models/@ref"><code>CachedWalk</code></a>.</p><pre><code class="language-julia-repl hljs">julia&gt; struct MyWalk &lt;: Functors.AbstractWalk end
+
+julia&gt; (::MyWalk)(recurse, x) = x isa Bar ? "hello" :
+                                            Functors.DefaultWalk()(recurse, x)
+
+julia&gt; fmap(x -&gt; 10x, m; walk = MyWalk())
+Foo("hello", (40, 50, "hello"))
+
+julia&gt; fmap(MyWalk(), x -&gt; 10x, m)
+Foo("hello", (4, 5, "hello"))</code></pre><p>The behaviour when the same node appears twice can be altered by giving a value to the <code>prune</code> keyword, which is then used in place of all but the first:</p><pre><code class="language-julia-repl hljs">julia&gt; twice = [1, 2];
+
+julia&gt; fmap(float, (x = twice, y = [1,2], z = twice); prune = missing)
+(x = [1.0, 2.0], y = [1.0, 2.0], z = missing)</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.isleaf" id="Functors.isleaf"><code>Functors.isleaf</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">Functors.isleaf(x)</code></pre><p>Return true if <code>x</code> has no <a href="#Functors.children"><code>children</code></a> according to <a href="#Functors.functor"><code>functor</code></a>.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; Functors.isleaf(1)
+true
+
+julia&gt; Functors.isleaf([2, 3, 4])
+true
+
+julia&gt; Functors.isleaf(["five", [6, 7]])
+false
+
+julia&gt; Functors.isleaf([])
+false
+
+julia&gt; Functors.isleaf((8, 9))
+false
+
+julia&gt; Functors.isleaf(())
+true</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.children" id="Functors.children"><code>Functors.children</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">Functors.children(x)</code></pre><p>Return the children of <code>x</code> as defined by <a href="#Functors.functor"><code>functor</code></a>. Equivalent to <code>functor(x)[1]</code>.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.fcollect" id="Functors.fcollect"><code>Functors.fcollect</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">fcollect(x; exclude = v -&gt; false)</code></pre><p>Traverse <code>x</code> by recursing each child of <code>x</code> as defined by <a href="#Functors.functor"><code>functor</code></a> and collecting the results into a flat array, ordered by a breadth-first traversal of <code>x</code>, respecting the iteration order of <code>children</code> calls.</p><p>Doesn't recurse inside branches rooted at nodes <code>v</code> for which <code>exclude(v) == true</code>. In such cases, the root <code>v</code> is also excluded from the result. By default, <code>exclude</code> always yields <code>false</code>.</p><p>See also <a href="#Functors.children"><code>children</code></a>.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; struct Foo; x; y; end
+
+julia&gt; @functor Foo
+
+julia&gt; struct Bar; x; end
+
+julia&gt; @functor Bar
+
+julia&gt; struct TypeWithNoChildren; x; y; end
+
+julia&gt; m = Foo(Bar([1,2,3]), TypeWithNoChildren(:a, :b))
+Foo(Bar([1, 2, 3]), TypeWithNoChildren(:a, :b))
+
+julia&gt; fcollect(m)
+4-element Vector{Any}:
+ Foo(Bar([1, 2, 3]), TypeWithNoChildren(:a, :b))
+ Bar([1, 2, 3])
+ [1, 2, 3]
+ TypeWithNoChildren(:a, :b)
+
+julia&gt; fcollect(m, exclude = v -&gt; v isa Bar)
+2-element Vector{Any}:
+ Foo(Bar([1, 2, 3]), TypeWithNoChildren(:a, :b))
+ TypeWithNoChildren(:a, :b)
+
+julia&gt; fcollect(m, exclude = v -&gt; Functors.isleaf(v))
+2-element Vector{Any}:
+ Foo(Bar([1, 2, 3]), TypeWithNoChildren(:a, :b))
+ Bar([1, 2, 3])</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.functor" id="Functors.functor"><code>Functors.functor</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">Functors.functor(x) = functor(typeof(x), x)</code></pre><p>Returns a tuple containing, first, a <code>NamedTuple</code> of the children of <code>x</code> (typically its fields), and second, a reconstruction funciton. This controls the behaviour of <a href="#Functors.fmap"><code>fmap</code></a>.</p><p>Methods should be added to <code>functor(::Type{T}, x)</code> for custom types, usually using the macro <a href="#Functors.@functor"><code>@functor</code></a>.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" href="#Functors.fmapstructure" id="Functors.fmapstructure"><code>Functors.fmapstructure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">fmapstructure(f, x; exclude = isleaf)</code></pre><p>Like <a href="#Functors.fmap"><code>fmap</code></a>, but doesn't preserve the type of custom structs. Instead, it returns a <code>NamedTuple</code> (or a <code>Tuple</code>, or an array), or a nested set of these.</p><p>Useful for when the output must not contain custom structs.</p><p><strong>Examples</strong></p><pre><code class="language-julia-repl hljs">julia&gt; struct Foo; x; y; end
+
+julia&gt; @functor Foo
+
+julia&gt; m = Foo([1,2,3], [4, (5, 6), Foo(7, 8)]);
+
+julia&gt; fmapstructure(x -&gt; 2x, m)
+(x = [2, 4, 6], y = Any[8, (10, 12), (x = 14, y = 16)])
+
+julia&gt; fmapstructure(println, m)
+[1, 2, 3]
+4
+5
+6
+7
+8
+(x = nothing, y = Any[nothing, (nothing, nothing), (x = nothing, y = nothing)])</code></pre></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../nnlib/">« Low-level Operations – NNlib.jl</a><a class="docs-footer-nextpage" href="../../tutorials/linear_regression/">Linear Regression »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label></p><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div><p></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 18 February 2023 05:37">Saturday 18 February 2023</span>. Using Julia version 1.6.7.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></HTML>
